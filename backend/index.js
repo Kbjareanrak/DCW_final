@@ -18,11 +18,19 @@ const router = require('express').Router(),
 
 app.use('/api', router)
 router.use(cors({ origin: 'http://localhost:3000', credentials: true }))
-
+// router.use(cors())
 router.use(express.json())
 router.use(express.urlencoded({ extended: false }))
 
-router.post("/login", (req, res, next) => {
+let students = {
+    list: [
+        { "id": 4010341, "name": "Warodom", "surname": "Werapun","major": "CoE","gpa": 3.3 },
+        { "id": 4010342, "name": "John", "surname": "Lennon","major": "SE","gpa": 2.87 },
+        { "id": 5935512090, "name": "Kanokwan", "surname": "Jareanrak","major": "CoE","gpa": 2.32 }]
+ }
+
+
+ router.post("/login", (req, res, next) => {
     passport.authenticate("local", { session: false }, (err, user, info) => {
       console.log("Login: ", req.body, user, err, info);
       if (err) return next(err);
@@ -95,6 +103,54 @@ router.post('/register',
 
 router.get('/alluser', (req,res) => res.json(db.users.users))
 
+router.get('/foo',
+    passport.authenticate('jwt', { session: false }),
+    (req, res, next) => {
+        res.send('Foo');
+    });
+
+router.route('/students')
+    .get((req, res) => res.json(students))
+    .post((req, res) => {
+     console.log(req.body)
+     let newStudent = {}
+     newStudent.id = (students.list.length)?students.list[students.list.length - 1].id + 1:1
+     newStudent.name = req.body.name
+     newStudent.surname = req.body.surname
+     newStudent.major = req.body.major
+     newStudent.gpa = req.body.gpa
+     students = { "list": [...students.list, newStudent] }
+     res.json(students)
+     })
+ 
+ router.route('/students/:student_id')
+    .get((req, res) => {
+        const student_id = req.params.student_id
+        const id = students.list.findIndex(item => +item.id === +student_id)
+        res.json(students.list[id])
+    })
+    .put((req, res) => {
+     const student_id = req.params.student_id
+     const id = students.list.findIndex(item => +item.id === +student_id)
+     students.list[id].name = req.body.name
+     students.list[id].surname = req.body.surname
+     students.list[id].major = req.body.major
+     students.list[id].gpa = req.body.gpa
+     res.json(students.list[id])
+     })
+     .delete((req, res) => {
+     const student_id = req.params.student_id
+     console.log('studentId: ',student_id)
+     students.list = students.list.filter(item => +item.id !== +student_id)
+     res.json(students.list)
+     })
+
+router.get('/editProfile',
+    passport.authenticate('jwt', { session: false }),
+     (req, res, next) => {
+         res.send(req.user)
+     });
+     
 router.get('/', (req, res, next) => {
     res.send('Respond without authentication');
 });
@@ -113,3 +169,4 @@ app.use((err, req, res, next) => {
 
 // Start Server
 app.listen(port, () => console.log(`Server is running on port ${port}`))
+
