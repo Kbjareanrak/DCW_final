@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Head from 'next/head'
 import Layout from '../components/layout'
 import styles from '../styles/Home.module.css'
-import Navbar from '../components/navbar'
+import Navbar from '../components/navRegis'
 import axios from 'axios'
 import config from '../config/config'
 
@@ -77,24 +77,28 @@ export default function Register({ token }) {
             <Head>
                 <title>Register</title>
             </Head>
-            <div className={styles.container}>
-                <Navbar />
-                <h1>Register</h1>
-                <div><b>Token:</b> {token.substring(0, 15)}...
-                <button
-                        onClick={() => { navigator.clipboard.writeText(token) }}>
-                        Copy token
-                </button>
-                </div>
-                <br />
-            Status:  {status}
-                <br /><br />
-                <div className={styles.content}>
-                    {registerForm()}
-                </div>
+            <div className={styles.navbarRight}>
+            <Navbar />
+            </div>
+            <div className={styles.front}>
+                <div className={styles.container}>
+                    <h1>Register</h1>
+                    {/* <div><b>Token:</b> {token.substring(0, 15)}...
+                    <button
+                            onClick={() => { navigator.clipboard.writeText(token) }}>
+                            Copy token
+                    </button>
+                    </div>
+                    <br />
+                Status:  {status}
+                    <br /><br /> */}
+                    <div className={styles.content}>
+                        {registerForm()}
+                    </div>
 
-                <div>
-                    <button onClick={register}>Register</button>
+                    <div>
+                        <button onClick={register}>Register</button>
+                    </div>
                 </div>
             </div>
         </Layout>

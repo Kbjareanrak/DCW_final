@@ -1,16 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+.para {
+    font-family:'Itim', cursive;
+    background-color: wheat;
+    padding: 5rem;
+    text-align: center;
+}
+
 .frontbar{
     font-family: "Brush Script MT";
 }
 
 .front{
-    font-family: Monospace, "Monaco";
+    font-family: 'Itim', cursive;
 }
 
 .header {
-    background-color: #d5f3cf;
-    padding: 60px;
+    padding: 40px;
     text-align: center;
   }
+
+.bgHeader {
+    /* background-image: url("pic/IMG_0484.PNG"); */
+    background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20200914/pngtree-splattered-blood-drops-halloween-blood-background-image_398578.jpg");
+    color: whitesmoke;
+    font-family: "Brush Script MT";
+}
 
 .navbarRight {
     text-align: right;
@@ -21,22 +36,35 @@
     text-align: left;
 }
 
+div.sizePic img {
+    width: 230px;
+    height: auto;
+}
+
+.toppicPad {
+    /* background-color:#f5d7c3; */
+    background-color:tomato;
+    padding: 0.7rem 2rem;
+
+}
+
 .position1 {
-    background-color: #f5d7c3;
-    padding: 100px;
+    padding: 3px;
     text-align: center;
 }
 
 .position2 {
-    background-color: #f5c3e6;
-    padding: 100px;
+    padding: 10px;
     text-align: center;
 }
 
 .footer {
-    background-color: #c3e7f5;
-    padding: 65px;
+    padding: 20px;
     text-align: center;
+    /* background: rgb(250, 228, 225); */
+    background-color:black;
+    margin-top: 20px;
+    color: whitesmoke;
 }
 
 .container {
@@ -73,4 +101,37 @@
     margin: 0px 0;
     box-sizing: border-box;
     font-size: 1.2rem;
+}
+/* album Picture */
+div.desc {
+    padding: 15px;
+    text-align: center;
+  }
+
+ div.sizePicBook img {
+    width: 150px;
+    height: auto;
+}
+
+div.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+  }
+  div.gallery:hover {
+    border: 1px solid #777;
+  }
+  div.gallery img {
+    width: 100%;
+    height: auto;
+  }
+
+.galleryRow {
+    /* min-height: 10vh; */
+    padding: 0 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
 }
