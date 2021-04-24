@@ -2,8 +2,8 @@
 
 .para {
     font-family:'Itim', cursive;
-    background-color: wheat;
-    padding: 5rem;
+    background-color: rgb(230, 227, 227);
+    padding:3rem;
     text-align: center;
 }
 
@@ -25,6 +25,11 @@
     background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20200914/pngtree-splattered-blood-drops-halloween-blood-background-image_398578.jpg");
     color: whitesmoke;
     font-family: "Brush Script MT";
+}
+.bg {
+    background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20200914/pngtree-splattered-blood-drops-halloween-blood-background-image_398578.jpg");
+    color: whitesmoke;
+    font-family: 'Itim',"Brush Script MT";
 }
 
 .navbarRight {
@@ -133,5 +138,16 @@ div.gallery {
     display: flex;
     flex-direction: row;
     justify-content: left;
+    align-items: center;
+}
+
+.border {
+    width: 400px;
+    height: 370px;
+    border: 7px solid tomato;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }

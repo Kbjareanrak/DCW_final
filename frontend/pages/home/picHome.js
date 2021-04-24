@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link'
 import { Fade } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 
@@ -18,16 +19,22 @@ export default function Slideshow() {
         <Fade>
           <div className="each-fade">
             <img src={fadeImages[0]} />
-            <h3 className={styles.frontbar}>Click</h3>
+            <div className={styles.frontbar}>
+            <Link href="/book/1"><a> <h3> Click</h3> </a></Link>
+            </div>
           </div>
 
           <div className="each-fade">
             <img src={fadeImages[1]} />
-              <h3 className={styles.frontbar}>Click</h3>
+            <div className={styles.frontbar}>
+            <Link href="/book/2"><a> <h3> Click</h3> </a></Link>
+            </div>
           </div>
           <div className="each-fade">
             <img src={fadeImages[2]} />
-              <h3 className={styles.frontbar}>Click</h3>
+            <div className={styles.frontbar}>
+            <Link href="/book/3"><a> <h3> Click</h3> </a></Link>
+            </div>
           </div>
         </Fade>
       </div>  

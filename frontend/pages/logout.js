@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
-import Navbar from '../components/navbar'
+import Navbar from '../components/navRegis'
 import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import axios from 'axios'
@@ -23,10 +23,12 @@ export default function Logout({ token }) {
     return (
         <Layout>
             <Head>
-                <title>User profile</title>
+                <title>Logout</title>
             </Head>
+            <div className={styles.navbarRight}>
+            <Navbar />
+            </div>
             <div className={styles.container}>
-                <Navbar />
                 <h1>Logout</h1>
                 <div>
                     <h2> {status}  </h2>

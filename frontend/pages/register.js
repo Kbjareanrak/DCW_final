@@ -77,29 +77,35 @@ export default function Register({ token }) {
             <Head>
                 <title>Register</title>
             </Head>
+            <div className={styles.bg}>
             <div className={styles.navbarRight}>
             <Navbar />
             </div>
+            
             <div className={styles.front}>
                 <div className={styles.container}>
-                    <h1>Register</h1>
-                    {/* <div><b>Token:</b> {token.substring(0, 15)}...
-                    <button
-                            onClick={() => { navigator.clipboard.writeText(token) }}>
-                            Copy token
-                    </button>
-                    </div>
-                    <br />
-                Status:  {status}
-                    <br /><br /> */}
-                    <div className={styles.content}>
-                        {registerForm()}
-                    </div>
+                    <div className={styles.border}>
+                        <h1>Sign up</h1>
+                        {/* <div><b>Token:</b> {token.substring(0, 15)}...
+                        <button
+                                onClick={() => { navigator.clipboard.writeText(token) }}>
+                                Copy token
+                        </button>
+                        </div>
+                        <br />
+                    Status:  {status}
+                        <br /><br /> */}
+                        <div className={styles.content}>
+                            {registerForm()}
+                        </div>
 
-                    <div>
-                        <button onClick={register}>Register</button>
+                        <div >
+                            <button onClick={register}><a href="/">Register</a></button>
+                        </div>
                     </div>
                 </div>
+                </div>
+               
             </div>
         </Layout>
     )

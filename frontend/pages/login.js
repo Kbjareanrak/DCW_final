@@ -5,6 +5,8 @@ import Navbar from "../components/navbarLog";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
 import config from "../config/config";
+import AlbumBook from './home'
+
 
 export default function Login({ token }) {
   const [username, setUsername] = useState("");
@@ -58,26 +60,30 @@ export default function Login({ token }) {
       <Head>
         <title>Sign in</title>
       </Head>
+      <div className={styles.bg}>
       <div className={styles.navbarRight}>
       <Navbar />
       </div>
       <div className={styles.front}>
-        <div className={styles.container}>
-          <h1>Sign in</h1>
-          {/* <div>
-            <b>Token:</b> {token.substring(0, 15)}...
-            <button onClick={copyText}> Copy token </button>
-          </div> */}
-          {/* <br /> */}
-          {/* <div>Status: {status}</div> */}
-          <br />
-          {loginForm()}
-          <div>
-            <button onClick={login}>Login</button>
+                <div className={styles.container}>
+                    <div className={styles.border}>
+            <h1>Sign in</h1>
+            {/* <div>
+              <b>Token:</b> {token.substring(0, 15)}...
+              <button onClick={copyText}> Copy token </button>
+            </div> */}
+            {/* <br /> */}
+            {/* <div>Status: {status}</div> */}
+            <br />
+            {loginForm()}
+            <div>
+              <button onClick={login}><a href="/home">Login</a></button>
+            </div>
           </div>
         </div>
+        
       </div>
-      
+      </div>
     </Layout>
   );
 }

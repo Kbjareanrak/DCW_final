@@ -1,15 +1,41 @@
 import Head from 'next/head' 
 import Layout from '../components/layout'
 import styles from '../styles/Home.module.css'
-import NavbarHome from '../components/navbarhome'
-import Slideshow from '../pages/home/picHome'
-import AlbumBook from '../pages/home/albumBook'
-export default function Home() {
+import Navbar from '../components/navbar'
+import Slideshow from './home/picHome'
+import AlbumBook from './home/albumBook'
+
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import withAuth from '../components/withAuth'
+import config from '../config/config'
+
+const Home = ({ token }) => {
+    const [user, setUser] = useState({})
+
+    useEffect(() => {
+        profileUser()
+    }, [])
+
+    const profileUser = async () => {
+        try {
+            // console.log('token: ', token)
+            const users = await axios.get(`${config.URL}/home`, {
+                headers: { Authorization: `Bearer ${token}` }
+            })
+            // console.log('user: ', users.data)
+            setUser(users.data)
+        }
+        catch (e) {
+            console.log(e)
+        }
+
+    }
 
   const headderForm = () => (
     <div className={styles.bgHeader}>
       <div className ={styles.navbarRight}>
-        <NavbarHome />
+        <Navbar/>
       </div>
       <div className= {styles.header}>
         <h1 >BOR SHOP</h1>
@@ -71,19 +97,22 @@ export default function Home() {
     <Head>
         <title>BOR Shop</title>
     </Head>
-     {headderForm()}
+      {headderForm()}
 
-    {/* Body */}
-    <div>
-      <br/>
-    {descPart()}
-    {newBooks()}
-    {manuBooks()}
-    {googleMap()}
-    
-    {/* Footer */}
-    {address()}
-    </div>
+      {/* Body */}
+      {descPart()}
+      {newBooks()}
+      {manuBooks()}
+      {googleMap()}
+
+      {/* Footer */}
+      {address()}
+
     </Layout>
   )
+} 
+export default withAuth(Home);
+
+export function getServerSideProps({ req, res }) {
+    return { props: { token: req.cookies.token || "" } };
 }
