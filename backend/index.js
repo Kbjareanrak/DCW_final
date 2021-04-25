@@ -116,6 +116,7 @@ router.get('/home',
 //Books
 const dbBook = require('./dbBook.js')
 let books = dbBook.books
+let infos = dbBook.infos
  
 router.route('/books')
     .get((req, res) => res.json(books))
@@ -125,9 +126,6 @@ router.route('/books')
         let newBook = {}
         newBook.id = (books.list.length)?books.list[books.list.length - 1].id + 1:1
         newBook.bookName = req.body.bookName
-        nnewBook.name = req.body.name
-        newBook.phone = req.body.phone
-        newBook.day = req.body.day
         books = { "list": [...books.list, newBook] }
         res.json(books)
     })
@@ -145,10 +143,7 @@ router.route('/books/:book_id')
         if(id == -1){
             res.send('Not Found')
         }
-        books.list[id].name = req.body.name
-        books.list[id].surname = req.body.surname
-        books.list[id].major = req.body.major
-        books.list[id].gpa = req.body.gpa
+        books.list[id].bookName = req.body.bookName
         res.json(books.list)
     })
     .delete( (req, res) => {
@@ -160,52 +155,58 @@ router.route('/books/:book_id')
         res.json(books.list)
     })
 
-    let students = {
-        list: [
-            { "id": 4010341, "name": "Warodom", "surname": "Werapun", "major":"CoE", "GPA": 3.3 },
-            { "id": 4010342, "name": "John", "surname": "Lennon", "major":"SE", "GPA": 2.87 }]
-     }
-     
-     router.route('/students')
-        .get((req, res) => res.json(students))
-     
-        .post((req, res) => {
-            console.log(req.body)
-            let newStudent = {}
-            newStudent.id = (students.list.length)?students.list[students.list.length - 1].id + 1:1
-            newStudent.name = req.body.name
-            newStudent.weight = req.body.weight
-            students = { "list": [...students.list, newStudent] }
-            res.json(students)
-        })
-    
-    router.route('/students/:student_id')
-        .get((req, res) => {
-            let id = students.list.findIndex( (item) => (item.id === +req.params.student_id) )
-            if(id == -1){
-                res.send('Not Found')
-            }
-            res.json(students.list[id])
-        })
-        .put((req,res) => {
-            let id = students.list.findIndex( (item) => (item.id === +req.params.student_id) )
-            if(id == -1){
-                res.send('Not Found')
-            }
-            students.list[id].name = req.body.name
-            students.list[id].surname = req.body.surname
-            students.list[id].major = req.body.major
-            students.list[id].gpa = req.body.gpa
-            res.json(students.list)
-        })
-        .delete( (req, res) => {
-            students.list = students.list.filter( item => item.id !== +req.params.student_id )
-            let id = students.list.findIndex( (item) => (item.id === +req.params.student_id) )
-            if(id == -1){
-                res.send('Not Found')
-            }
-            res.json(students.list)
-        })
+router.route('/infos')
+    .get((req, res) => res.json(infos))
+ 
+    .post((req, res) => {
+        console.log(req.body)
+        let newInfo = {}
+        newInfo.id = (infos.list.length)?infos.list[infos.list.length - 1].id + 1:1
+        newInfo.name = req.body.name
+        newInfo.phone = req.body.phone
+        newInfo.day = req.body.day
+        infos = { "list": [...infos.list, newInfo] }
+        res.json(infos)
+    })
+
+router.route('/infos/:info_id')
+    .get((req, res) => {
+        let id = infos.list.findIndex( (item) => (item.id === +req.params.info_id) )
+        if(id == -1){
+            res.send('Not Found')
+        }
+        res.json(infos.list[id])
+    })
+    .put((req,res) => {
+        let id = infos.list.findIndex( (item) => (item.id === +req.params.info_id) )
+        if(id == -1){
+            res.send('Not Found')
+        }
+        infos.list[id].name = req.body.name
+        infos.list[id].phone = req.body.phone
+        infos.list[id].day = req.body.day
+        res.json(infos.list)
+    })
+    .delete( (req, res) => {
+        infos.list = infos.list.filter( item => item.id !== +req.params.info_id )
+        let id = infos.list.findIndex( (item) => (item.id === +req.params.info_id) )
+        if(id == -1){
+            res.send('Not Found')
+        }
+        res.json(infos.list)
+    })
+
+router.get('/total',
+    passport.authenticate('jwt', { session: false }),
+     (req, res, next) => {
+         res.send(req.user)
+     });
+router.get('/showdata',
+     passport.authenticate('jwt', { session: false }),
+      (req, res, next) => {
+          res.send(req.user)
+      });
+
 router.get('/', (req, res, next) => {
     res.send('Respond without authentication');
 });

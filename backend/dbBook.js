@@ -1,4 +1,4 @@
-let info = {
+let Data = {
     list: [
         { "id": 1,"bookName": "หนังสือเล่มหนึ่ง", "typeBook":"Suspense", "price": 150, "pic": "http://cg.lnwfile.com/o8yweh.jpg" },
         { "id": 2,"bookName": "หนังสือเล่มสอง", "typeBook":"Suspense","price": 160, "pic": "http://a.lnwfile.com/9l6cjr.jpg" },
@@ -6,9 +6,14 @@ let info = {
  }
  let books = {
      list: [
-            { "id": 1,"bookName": "หนังสือเล่มหนึ่ง","name": "Kanokwan", "phone": 090999, "day": "15/23"}
-     ]
+            { "id": 1,"bookName": "หนังสือเล่มหนึ่ง"}]
  }
 
+let infos = {
+    list: [
+           { "id":101,"name": "Kanokwan", "phone": 090999, "day": "15/23"}
+    ]
+}
+
  exports.books = books
- exports.info = info
+ exports.infos = infos

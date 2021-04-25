@@ -29,10 +29,15 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/books.js"
     ],
-    "/register": [
+    "/infos": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/register.js"
+      "static/chunks/pages/infos.js"
+    ],
+    "/total": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/total.js"
     ]
   },
   "ampFirstPages": []
