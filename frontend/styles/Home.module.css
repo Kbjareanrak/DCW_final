@@ -8,7 +8,7 @@
 }
 
 .frontbar{
-    font-family: "Brush Script MT";
+    font-family: "Brush Script MT",'Itim';
 }
 
 .front{
@@ -61,6 +61,10 @@ div.sizePic img {
 .position2 {
     padding: 10px;
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
 }
 
 .footer {
@@ -121,7 +125,7 @@ div.desc {
 div.gallery {
     margin: 5px;
     border: 1px solid #ccc;
-    float: left;
+    float: center;
     width: 180px;
   }
   div.gallery:hover {
@@ -137,7 +141,7 @@ div.gallery {
     padding: 0 3rem;
     display: flex;
     flex-direction: row;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
 }
 

@@ -116,43 +116,96 @@ router.get('/home',
 //Books
 const dbBook = require('./dbBook.js')
 let books = dbBook.books
-
+ 
 router.route('/books')
-     .get((req, res) => res.json(books))
-     .post((req, res) => {
-      console.log(req.body)
-      let newBook = {}
-      newBook.id = (books.list.length)?books.list[books.list.length - 1].id + 1:1
-      newBook.name = req.body.name
-      ewBook.idBook = req.body.idBook
-      newBook.typeBook = req.body.typeBook
-      newBook.price = req.body.price
-      newBook.pic = req.body.pic
-      books = { "list": [...books.list, newBook] }
-      res.json(books)
-      })
-  
-router.route('/books/:book_id')
-     .get((req, res) => {
-         const book_id = req.params.book_id
-         const id = books.list.findIndex(item => +item.id === +book_id)
-         res.json(books.list[id])
-     })
-     .put((req, res) => {
-      const book_id = req.params.book_id
-      const id = books.list.findIndex(item => +item.id === +book_id)
-      books.list[id].name = req.body.name
-      books.list[id].typeBook = req.body.typeBook
-      books.list[id].price = req.body.price
-      res.json(books.list[id])
-      })
-      .delete((req, res) => {
-      const book_id = req.params.book_id
-      console.log('bookId: ',book_id)
-      books.list = books.list.filter(item => +item.id !== +book_id)
-      res.json(books.list)
-      })
+    .get((req, res) => res.json(books))
+ 
+    .post((req, res) => {
+        console.log(req.body)
+        let newBook = {}
+        newBook.id = (books.list.length)?books.list[books.list.length - 1].id + 1:1
+        newBook.bookName = req.body.bookName
+        nnewBook.name = req.body.name
+        newBook.phone = req.body.phone
+        newBook.day = req.body.day
+        books = { "list": [...books.list, newBook] }
+        res.json(books)
+    })
 
+router.route('/books/:book_id')
+    .get((req, res) => {
+        let id = books.list.findIndex( (item) => (item.id === +req.params.book_id) )
+        if(id == -1){
+            res.send('Not Found')
+        }
+        res.json(books.list[id])
+    })
+    .put((req,res) => {
+        let id = books.list.findIndex( (item) => (item.id === +req.params.book_id) )
+        if(id == -1){
+            res.send('Not Found')
+        }
+        books.list[id].name = req.body.name
+        books.list[id].surname = req.body.surname
+        books.list[id].major = req.body.major
+        books.list[id].gpa = req.body.gpa
+        res.json(books.list)
+    })
+    .delete( (req, res) => {
+        books.list = books.list.filter( item => item.id !== +req.params.book_id )
+        let id = books.list.findIndex( (item) => (item.id === +req.params.book_id) )
+        if(id == -1){
+            res.send('Not Found')
+        }
+        res.json(books.list)
+    })
+
+    let students = {
+        list: [
+            { "id": 4010341, "name": "Warodom", "surname": "Werapun", "major":"CoE", "GPA": 3.3 },
+            { "id": 4010342, "name": "John", "surname": "Lennon", "major":"SE", "GPA": 2.87 }]
+     }
+     
+     router.route('/students')
+        .get((req, res) => res.json(students))
+     
+        .post((req, res) => {
+            console.log(req.body)
+            let newStudent = {}
+            newStudent.id = (students.list.length)?students.list[students.list.length - 1].id + 1:1
+            newStudent.name = req.body.name
+            newStudent.weight = req.body.weight
+            students = { "list": [...students.list, newStudent] }
+            res.json(students)
+        })
+    
+    router.route('/students/:student_id')
+        .get((req, res) => {
+            let id = students.list.findIndex( (item) => (item.id === +req.params.student_id) )
+            if(id == -1){
+                res.send('Not Found')
+            }
+            res.json(students.list[id])
+        })
+        .put((req,res) => {
+            let id = students.list.findIndex( (item) => (item.id === +req.params.student_id) )
+            if(id == -1){
+                res.send('Not Found')
+            }
+            students.list[id].name = req.body.name
+            students.list[id].surname = req.body.surname
+            students.list[id].major = req.body.major
+            students.list[id].gpa = req.body.gpa
+            res.json(students.list)
+        })
+        .delete( (req, res) => {
+            students.list = students.list.filter( item => item.id !== +req.params.student_id )
+            let id = students.list.findIndex( (item) => (item.id === +req.params.student_id) )
+            if(id == -1){
+                res.send('Not Found')
+            }
+            res.json(students.list)
+        })
 router.get('/', (req, res, next) => {
     res.send('Respond without authentication');
 });

@@ -20,20 +20,20 @@ export default function Slideshow() {
           <div className="each-fade">
             <img src={fadeImages[0]} />
             <div className={styles.frontbar}>
-            <Link href="/book/1"><a> <h3> Click</h3> </a></Link>
+            {/* <Link href="/book/1"><a> <h3> Click</h3> </a></Link> */}
             </div>
           </div>
 
           <div className="each-fade">
             <img src={fadeImages[1]} />
             <div className={styles.frontbar}>
-            <Link href="/book/2"><a> <h3> Click</h3> </a></Link>
+            {/* <Link href="/book/2"><a> <h3> Click</h3> </a></Link> */}
             </div>
           </div>
           <div className="each-fade">
             <img src={fadeImages[2]} />
             <div className={styles.frontbar}>
-            <Link href="/book/3"><a> <h3> Click</h3> </a></Link>
+            {/* <Link href="/book/3"><a> <h3> Click</h3> </a></Link> */}
             </div>
           </div>
         </Fade>
