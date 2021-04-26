@@ -5,6 +5,8 @@ import NavbarHome from '../components/navbarhome'
 import Slideshow from '../pages/home/picHome'
 import AlbumBook from '../pages/home/albumBook'
 import Map from './map'
+
+
 export default function Home() {
 
   const headderForm = () => (

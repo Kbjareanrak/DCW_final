@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css'
 import Navbar from '../components/navbar'
 import Slideshow from './home/picHome'
 import AlbumBook from './home/albumBook'
+import Map from './map'
 
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -79,6 +80,8 @@ const Home = ({ token }) => {
   const googleMap = () => (
     <div>
     <h3 className={styles.toppicPad}><b>Google Maps</b></h3>
+    <br/>
+    <Map/>
     </div>
 
   )

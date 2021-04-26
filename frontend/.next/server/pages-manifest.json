@@ -2,5 +2,11 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/home": "pages/home.js"
+  "/register": "pages/register.js",
+  "/infos": "pages/infos.js",
+  "/books": "pages/books.js",
+  "/total": "pages/total.js",
+  "/home": "pages/home.js",
+  "/": "pages/index.js",
+  "/logout": "pages/logout.js"
 }

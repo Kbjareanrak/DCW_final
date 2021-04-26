@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 
+.map {
+    /* height: 80%;
+    width: 80%; */
+    width: 60%;
+    height: 30rem;
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+
+
 .para {
     font-family:'Itim', cursive;
     background-color: rgb(230, 227, 227);
