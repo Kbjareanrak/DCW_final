@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css'
 import NavbarHome from '../components/navbarhome'
 import Slideshow from '../pages/home/picHome'
 import AlbumBook from '../pages/home/albumBook'
+import Map from './map'
 export default function Home() {
 
   const headderForm = () => (
@@ -55,6 +56,7 @@ export default function Home() {
   const googleMap = () => (
     <div>
     <h3 className={styles.toppicPad}><b>Google Maps</b></h3>
+    <Map/>
     </div>
 
   )

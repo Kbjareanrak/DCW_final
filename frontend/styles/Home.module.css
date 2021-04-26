@@ -52,6 +52,13 @@ div.sizePic img {
     padding: 0.7rem 2rem;
 
 }
+.padBook {
+    padding: 0.7rem 2rem;
+}
+
+.padFinish {
+    text-align: right;
+}
 
 .position1 {
     padding: 3px;
@@ -79,6 +86,13 @@ div.sizePic img {
 .container {
     min-height: 100vh;
     padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.padcontainer {
+    min-height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;

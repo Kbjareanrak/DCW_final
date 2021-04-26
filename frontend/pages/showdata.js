@@ -48,7 +48,6 @@ const showdata = ({token}) => {
             <div><b>Phone:</b> {info.phone}</div>
             <div><b>Day:</b> {info.day}</div>
             <br/>
-            <div><Link href="/infos"><a><b>Edit data</b> </a></Link> </div>
           </div>
         );
       });
@@ -62,12 +61,12 @@ const showdata = ({token}) => {
             <Head>
                 <title>Book profile</title>
             </Head>
-            <div className={styles.container}>
-                <div>
-                    <h1>Data profile</h1>
-                    {showInfo()}
-                    
-                </div>
+            <div className ={styles.front}>
+              <h2 className={styles.toppicPad}>ข้อมูลผู้เช่า</h2>
+              <div className = {styles.padBook}>
+                {showInfo()}
+                <button><a href="/infos">Edit data</a></button>
+              </div>
             </div>
         </Layout>
     )

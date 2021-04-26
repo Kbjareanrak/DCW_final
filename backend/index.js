@@ -117,6 +117,19 @@ router.get('/home',
 const dbBook = require('./dbBook.js')
 let books = dbBook.books
 let infos = dbBook.infos
+let dataBooks = dbBook.dataBooks
+
+router.route('/dataBooks')
+    .get((req, res) => res.json(dataBooks))
+
+router.route('/dataBooks/:book_id')
+    .get((req, res) => {
+        let id = dataBooks.list.findIndex( (item) => (item.idBook === +req.params.book_id) )
+        if(id == -1){
+            res.send('Not Found')
+        }
+        res.json(dataBooks.list[id])
+    })
  
 router.route('/books')
     .get((req, res) => res.json(books))
@@ -125,6 +138,7 @@ router.route('/books')
         console.log(req.body)
         let newBook = {}
         newBook.id = (books.list.length)?books.list[books.list.length - 1].id + 1:1
+        newBook.idBook = req.body.idBook
         newBook.bookName = req.body.bookName
         books = { "list": [...books.list, newBook] }
         res.json(books)
@@ -143,6 +157,7 @@ router.route('/books/:book_id')
         if(id == -1){
             res.send('Not Found')
         }
+        books.list[id].idBook = req.body.idBook
         books.list[id].bookName = req.body.bookName
         res.json(books.list)
     })

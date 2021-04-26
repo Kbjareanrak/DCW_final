@@ -3,7 +3,7 @@ import axios from 'axios'
 import useSWR, { mutate } from 'swr'
 import Layout from '../components/layout'
 import withAuth from '../components/withAuth'
-import Navbar from '../components/navbar'
+import Navbar from '../components/navbarName'
 import styles from '../styles/Home.module.css'
 import config from '../config/config'
 
@@ -43,14 +43,14 @@ const SWR1 = ({token}) => {
    // console.log(data)
 
    const printInfos = (infos) => {
-       console.log('Books:', infos)
+       console.log('Data:', infos)
        if (infos && infos.length)
            return (infos.map((info, index) =>
-           (<li key={index}>
+           (<div key={index}>
                {(info) ? info.name : '-'}: {(info) ? info.phone : 0}: {(info) ? info.day : '-'}
                <button onClick={() => deleteInfo(info.id)}> Delete </button>
                <button onClick={() => updateInfo(info.id)}>Update</button>
-           </li>)
+           </div>)
            ))
        else {
            return (<h2>No Data</h2>)
@@ -86,20 +86,34 @@ const SWR1 = ({token}) => {
 
    return (
      <Layout>
-         <Navbar/>
-       <div>
-       <h1> Datas</h1>
-       <ul>{printInfos(data.list)}</ul> <br/>
-       {JSON.stringify(user)}
+        <div className = {styles.navbarRight}>
+            <Navbar/>   
+        </div>
+        <div className ={styles.front}>
+            <h2 className={styles.toppicPad}>ข้อมูลผู้เช่า</h2>
+           <div className = {styles.padBook}>
+               {printInfos(data.list)} <br/> 
+           </div>
+           
 
-       selected Data: {info.name} {info.phone} {info.day}
-       <h2>Add Data</h2>
-           Name:<input type="text" onChange={(e) => setName(e.target.value)} /><br/>
-           phone:<input type="number" onChange={(e) => setPhone(e.target.value)} /><br/>
-           Day:<input type="text" onChange={(e) => setDay(e.target.value)} /><br/>
-       <button onClick={() => addInfo(name, phone, day)}>Add Data</button>
-
-      </div>
+        <div className={styles.padcontainer}>
+            <div className={styles.border}>
+                <h2>เพิ่มข้อมูลผู้เช่า</h2>
+                <div className={styles.gridContainer}>
+                    <div>Name </div>
+                    <div> <input type="text" onChange={(e) => setName(e.target.value)} /></div>
+                    
+                    <div>phone</div><div> <input type="number" onChange={(e) => setPhone(e.target.value)} /></div>
+                    <div>Day </div><div><input type="text" onChange={(e) => setDay(e.target.value)} /></div>
+                    </div>
+                    <div>
+                    <button><a href="/books">ย้อนกลับ</a></button>
+                    <button onClick={() => addInfo(name, phone, day)}>Add Data</button>
+                    <button><a href="/total">ตกลง</a></button></div>
+            </div>
+        </div>
+        </div>
+        
     </Layout>
    )
 }
