@@ -67,13 +67,6 @@ router.get('/logout', (req, res) => {
     return res.json({ message: 'Logout successful' })
 })
 
-/* GET user profile. */
-router.get('/profile',
-    passport.authenticate('jwt', { session: false }),
-    (req, res, next) => {
-        res.send(req.user)
-    });
-
 router.post('/register',
     async (req, res) => {
         try {
@@ -94,18 +87,6 @@ router.post('/register',
     })
 
 router.get('/alluser', (req,res) => res.json(db.users.users))
-
-router.get('/foo',
-    passport.authenticate('jwt', { session: false }),
-    (req, res, next) => {
-        res.send('Foo');
-    });
-
-router.get('/editProfile',
-    passport.authenticate('jwt', { session: false }),
-     (req, res, next) => {
-         res.send(req.user)
-     });
 
 router.get('/home',
     passport.authenticate('jwt', { session: false }),
